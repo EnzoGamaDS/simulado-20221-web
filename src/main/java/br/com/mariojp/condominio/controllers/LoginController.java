@@ -3,6 +3,7 @@ package br.com.mariojp.condominio.controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import br.com.mariojp.condominio.dao.UsuarioDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,7 +21,18 @@ public class LoginController extends HttpServlet{
 		
 		String login = req.getParameter("login");
 		String senha = req.getParameter("senha");
-
+		
+		UsuarioDAO dao = new UsuarioDAO();
+		UsuarioListController u = new UsuarioListController();
+		
+		if (dao.findByLogin(login) != null) {
+			u.doGet(req, resp);
+			
+			
+		}
+		
+		UsuarioDAO autentication = new UsuarioDAO();
+		
 		//Pode apagar esse codigo
 		PrintWriter writer = resp.getWriter();
         writer.println("<html><title>Etapa 1</title><body>");
