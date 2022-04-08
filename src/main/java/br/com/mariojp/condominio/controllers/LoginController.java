@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import br.com.mariojp.condominio.dao.UsuarioDAO;
+import br.com.mariojp.condominio.model.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,36 +16,29 @@ import jakarta.servlet.http.HttpServletResponse;
 public class LoginController extends HttpServlet{
 	
 	
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String login = req.getParameter("login");
 		String senha = req.getParameter("senha");
 		
-		UsuarioDAO dao = new UsuarioDAO();
-		UsuarioListController u = new UsuarioListController();
+		UsuarioDAO u = new UsuarioDAO();
+		UsuarioListController c = new UsuarioListController();
+		Usuario us = u.findByLogin(login);
 		
-		if (dao.findByLogin(login) != null) {
-			u.doGet(req, resp);
-			
-			
+		try {
+			if (us.getLogin().equals(login) && us.getSenha().equals(senha)) {
+				c.doGet(req, resp);
+			}
+
+		} catch (Exception e) {
+			resp.sendRedirect("/login.jsp");
 		}
-		
-		UsuarioDAO autentication = new UsuarioDAO();
-		
-		//Pode apagar esse codigo
-		PrintWriter writer = resp.getWriter();
-        writer.println("<html><title>Etapa 1</title><body>");
-        writer.println("<h1>BOA SORTE!</h1>");
-        writer.println("<p>Os parametros passados foram:</p>");
-        writer.println("<p>login:"+login+"</p>");
-        writer.println("<p>senha:"+senha+"</p>");
-
-        writer.println("<p>Existe um usuario pré-cadastrado: login: root/ senha: 1234</p>");
-        writer.println("<p>Use o UsuarioDAO e o metodo findByLogin para autenticar o usuario. </p>");
-
-        writer.println("</body></html>");
 	}
 
 }

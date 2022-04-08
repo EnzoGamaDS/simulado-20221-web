@@ -5,9 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.jdt.internal.compiler.ast.ThisReference;
+
 import br.com.mariojp.condominio.model.Usuario;
 
-public class UsuarioDAO {
+public class UsuarioDAO {	
 
 	
 	
@@ -25,8 +27,7 @@ public class UsuarioDAO {
 		
 		return usuarios.get(login);
 	}
-	
-	
+
 	public void save(Usuario usuario) {
 		usuarios.put(usuario.getLogin(), usuario);
 	}

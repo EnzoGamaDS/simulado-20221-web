@@ -1,3 +1,6 @@
+<%@page import="br.com.mariojp.condominio.dao.UsuarioDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="br.com.mariojp.condominio.model.Usuario"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -13,8 +16,7 @@
 <body>
 <div class="px-4 py-5 my-5 text-center">
     <h1 class="display-5 fw-bold">LISTA DE USUARIOS</h1>
-   
-      <!--  SEU CODIGO AQUI -->
+
     
     </div>
 </div>
