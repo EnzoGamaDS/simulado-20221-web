@@ -15,11 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/login")
 public class LoginController extends HttpServlet{
 	
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 112309515090932531L;
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

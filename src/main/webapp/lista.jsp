@@ -15,19 +15,17 @@
 </head>
 <body>
 <div class="px-4 py-5 my-5 text-center">
-    <h1 class="display-5 fw-bold">LISTA DE USUARIOS</h1>
+    <h1 class="display-5 fw-bold" >LISTA DE USUARIOS</h1>
       <% 
       UsuarioDAO useD = new UsuarioDAO();
-     	List<Usuario> list = useD.findAll();
+      List<Usuario> list = useD.findAll();
      	
      	for(Usuario usuario: list){
      		%>
      		<p>
-     		<%= usuario.getLogin() %> 
+     		<%= usuario.getLogin() %>
      		</p>
      	<% }%>
-     	
-     
     
     </div>
 </div>
